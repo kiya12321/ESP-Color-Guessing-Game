@@ -8,6 +8,10 @@ def main():
 
 # variables
 guessesTaken = 0
+color = ""
+myName = ""
+colorList = ""
+endProgram = ""
 # list of colors
 colorList = ["red", "green", "blue", "orange", "yellow"]
 
@@ -18,25 +22,44 @@ myName = input()
 
 color = random.choice(colorList)
 print('\nWell, ' + myName + ', I am thinking a color.')
-# loop
-while guessesTaken < 3:
-    print('Try to guess.')
-    guess = input()
-    guess = str(guess)
+main()
 
-    guessesTaken = guessesTaken + 1
+
+# loop
+def loop(color, guessesTaken):
+    """loop Mod"""
+    while guessesTaken < 3:
+        print('Try to guess.')
+        guess = input()
+        guess = str(guess)
+
+        guessesTaken = guessesTaken + 1
+
+        if guess != color:
+            print('\nYour guess is incorrect.')
+
+        if guess == color:
+            break
+            # break
+    if guess == color:
+        guessesTaken = str(guessesTaken)
+        print('\nGood job, ' + myName + '! You guessed the ' + color + ' in ' + guessesTaken + ' guesses!')
 
     if guess != color:
-        print('\nYour guess is incorrect.')
-    if guess == color:
-        break
-# break
-if guess == color:
-    guessesTaken = str(guessesTaken)
-    print('\nGood job, ' + myName + '! You guessed the ' + color + ' in ' + guessesTaken + ' guesses!')
+        color = str(color)
+        print('The color I was thinking of was ' + color)
 
-if guess != color:
-    color = str(color)
-    print('The color I was thinking of was ' + color)
-main()
-# end
+
+loop(color, guessesTaken)
+
+while True:
+    a = input("\nEnter yes/no to continue? ")
+    if a == "yes":
+        color = random.choice(colorList)
+        loop(color, guessesTaken)
+        continue
+    elif a == "no":
+        break
+    else:
+        print("Enter either yes/no")
+#end
