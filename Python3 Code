@@ -1,0 +1,42 @@
+# This is a ESP game made by Kari Tant
+import random
+
+
+def main():
+    """Main Module"""
+
+
+# variables
+guessesTaken = 0
+# list of colors
+colorList = ["red", "green", "blue", "orange", "yellow"]
+
+print(
+    'Hello! This is an ESP Game. You can test out your extrasensory perception by \ntrying to guess the color I am thinking of.')
+print("\nWhat is your name?")
+myName = input()
+
+color = random.choice(colorList)
+print('\nWell, ' + myName + ', I am thinking a color.')
+# loop
+while guessesTaken < 3:
+    print('Try to guess.')
+    guess = input()
+    guess = str(guess)
+
+    guessesTaken = guessesTaken + 1
+
+    if guess != color:
+        print('\nYour guess is incorrect.')
+    if guess == color:
+        break
+# break
+if guess == color:
+    guessesTaken = str(guessesTaken)
+    print('\nGood job, ' + myName + '! You guessed the ' + color + ' in ' + guessesTaken + ' guesses!')
+
+if guess != color:
+    color = str(color)
+    print('The color I was thinking of was ' + color)
+main()
+# end
